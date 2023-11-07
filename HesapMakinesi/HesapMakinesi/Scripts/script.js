@@ -1,10 +1,15 @@
 ﻿        var islem;
 function isNumberKey(evt) {
     var charCode = (evt.which) ? evt.which : window.event.keyCode;
-    if ((charCode > 105 || charCode < 112) && (charCode > 31 && charCode < 57))
+    if ((charCode > 105 || charCode < 112) && (charCode > 31 && charCode < 57) || charCode==13)
         return true;
     return false;
 }
+document.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        islemSonuc();
+    }
+});
 
         function islemSonuc() {
             islem = document.getElementById("metin").value;
