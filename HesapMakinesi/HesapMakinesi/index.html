@@ -10,74 +10,11 @@
     <script src="Scripts/script.js"></script>
 </head>
 <body>
-    <script>
-        var islem;
-        document.getElementById("metin").addEventListener("keydown", engelle);
-        function islemSonuc() {
-            islem = document.getElementById("metin").value;
-            if (islem == isNaN) {
-                alert("hata işlemini gözden geçir");
-            }
-            else {
-                document.getElementById("metin").value = eval(islem);
-            }
-        }
-        //--------------------------------------------------- Buttonlara basıldıgında alana sayı ve işlemlerin gelmesini saglar. -------------------------------------------------
-        function bir() {
-            document.getElementById("metin").value += 1;
-        }
-        function iki() {
-            document.getElementById("metin").value += 2;
-        }
-        function uc() {
-            document.getElementById("metin").value += 3;
-        }
-        function dort() {
-            document.getElementById("metin").value += 4;
-        } function bes() {
-            document.getElementById("metin").value += 5;
-        } function alti() {
-            document.getElementById("metin").value += 6;
-        } function yedi() {
-            document.getElementById("metin").value += 7;
-        } function sekiz() {
-            document.getElementById("metin").value += 8;
-        } function dokuz() {
-            document.getElementById("metin").value += 9;
-        }
-        function sifir() {
-            document.getElementById("metin").value += 0;
-        }
-        function arti() {
-            document.getElementById("metin").value += "+";
-        }
-        function eksi() {
-            document.getElementById("metin").value += "-";
-        } function carp() {
-            document.getElementById("metin").value += "*";
-        } function bol() {
-            document.getElementById("metin").value += "/";
-        }
-        function temiz() {
-            document.getElementById("metin").value = "";
-        }
-        //------------------------------------------------------ Klavyeden harf ve özel karekter girmesini engeller.-----------------------------------------------------------
-        function engelle() {
-            if (window.event.keyCode == 8 || (window.event.keyCode >= 96 && window.event.keyCode <= 111)) {
-                return;
-            }
-            else {
-                document.getElementById("metin") = window.event.preventDefault();
-            }
-
-        }
-
-    </script>
     <div class="container">
         <div class="row">
             <div class="col-6 bg-dark p-2 m-2 rounded">
                 <div class="col-12 ">
-                    <input id="metin" class="align-content-center form-control border-danger mt-2" type="text">
+                    <input id="metin" class="align-content-center form-control border-danger mt-2" type="text" onkeypress="return isNumberKey(window.event)">
                 </div>
                 <div class="align-content-center">
                     <button onclick="bir()" class="mt-2 mx-1 col-3 btn btn-outline-info">1</button>
@@ -92,9 +29,10 @@
                     <button onclick="sekiz()" class="mt-2 mx-1 col-3 btn btn-outline-info">8</button>
                     <button onclick="dokuz()" class="mt-2 mx-1 col-3 btn btn-outline-info">9</button>
                     <button onclick="carp()" class="mt-2 mx-1 col-2 btn btn-outline-danger">*</button>
-                    <button onclick="sifir()" class="mt-2 mx-2 col-6 btn btn-outline-info">0</button>
+                    <button onclick="sifir()" class="mt-2 mx-1 col-3 btn btn-outline-info">0</button>
+                    <button onclick="document.getElementById('#metin').value += '.';" class="mt-2 mx-1 col-3 btn btn-outline-info">.</button>
                     <button onclick="islemSonuc()" class="mt-2 mx-1 col-3 btn btn-outline-warning">=</button>
-                    <button onclick="bol()" class="mt-2 mx-2 col-2 btn btn-outline-danger">/</button>
+                    <button onclick="bol()" class="mt-2 mx-1 col-2 btn btn-outline-danger">/</button>
                 </div>
                 <div>
                     <button onclick="temiz()" class="col-12 btn btn-outline-primary mt-2"> İçerigi Temizle </button>
